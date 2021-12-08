@@ -3,15 +3,14 @@
   require_once("functions.php");
 
   /* (1)ここにセッション変数の受け渡し処理を追加して下さい  */
-
-
-
-
-
-$dbh = db_conn();      // データベース接続
+  $edit = $_SESSION['edit'];
+  $name = $_SESSION['name']; 
+  $email = $_SESSION['email']; 
+  $gender = $_SESSION['gender']; 
+  $dbh = db_conn();      // データベース接続
 try{
     /* (2)ここにSQL文＋プレースホルダー　の文字列を準備する処理を追加して下さい  */
-
+    $sql = "UPDATE user SET email = :email, name = :name, gender = :gender, updatedate = NOW() WHERE id = :id"; 
     $stmt = $dbh->prepare($sql);                           //クエリの実行準備
     $stmt->bindValue(':email', $email, PDO::PARAM_STR);    //バインド:プレースホルダ―の値を埋める
     $stmt->bindValue(':name', $name, PDO::PARAM_STR);      //バインド:プレースホルダ―の値を埋める
