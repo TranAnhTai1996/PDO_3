@@ -9,7 +9,7 @@
   $gender = $_SESSION['gender']; 
   $dbh = db_conn();      // データベース接続
 try{
-    /* (2)ここにSQL文＋プレースホルダー　の文字列を準備する処理を追加して下さい  */
+    /* (2)ここにSQL文＋プレースホルダー　の文字列を準備する処理を追加して下さい  */ 
     $sql = "UPDATE user SET email = :email, name = :name, gender = :gender, updatedate = NOW() WHERE id = :id"; 
     $stmt = $dbh->prepare($sql);                           //クエリの実行準備
     $stmt->bindValue(':email', $email, PDO::PARAM_STR);    //バインド:プレースホルダ―の値を埋める
